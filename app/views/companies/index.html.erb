@@ -1,0 +1,23 @@
+<%
+    companies = Company.all
+%>
+
+<h1>Companies</h1>
+
+<ul>
+    <% for company in companies %>
+        <li><%= company.name %></li>
+    <% end %>
+</ul>
+
+<%
+    contacts = Contact.all
+%>
+
+<h1>Contacts</h1>
+
+<ul>
+    <% for contact in contacts %>
+        <li><%= contact.first_name %></li>
+    <% end %>
+</ul>

@@ -1,0 +1,60 @@
+
+
+<h1> Pull 5 Cards </h1>
+
+<p>Solution 1 - Breakout Team Solution (Cards might repeat)</p>
+
+    <%
+        for number in 1..5
+            card1number = rand(0..12)
+            card1suit = rand(0..3)
+            ranks = [2,3,4,5,6,7,8,9,10,"jack","queen","king","ace"]
+            suits = ["hearts","clubs","diamonds","spades"]
+            %>
+        <p>
+        <img src="/images/cards/<%= ranks[card1number] %>_of_<%= suits[card1suit] %>.svg">
+        </p>
+        <%end%>
+
+<p>Solution 2 - Shuffled Deck</p>
+<%
+    ranks = [2,3,4,5,6,7,8,9,10,"jack","queen","king","ace"]
+    suits = ["hearts","clubs","diamonds","spades"]
+    deck = []
+    for rank in ranks  
+        for suit in suits
+            card = "#{rank}_of_#{suit}"
+            deck.push(card)
+        end
+    end
+    shuffled_deck = deck.shuffle
+%>
+
+<ul>
+    <img src="/images/cards/<%= shuffled_deck[0] %>.svg">
+    <img src="/images/cards/<%= shuffled_deck[1] %>.svg">
+    <img src="/images/cards/<%= shuffled_deck[2] %>.svg">
+    <img src="/images/cards/<%= shuffled_deck[3] %>.svg">
+    <img src="/images/cards/<%= shuffled_deck[4] %>.svg">
+</ul>
+
+
+<p>Solution 3 - More Elegant</p>
+<%
+    ranks = [2,3,4,5,6,7,8,9,10,"jack","queen","king","ace"]
+    suits = ["hearts","clubs","diamonds","spades"]
+    deck = []
+    for rank in ranks  
+        for suit in suits
+            card = "#{rank}_of_#{suit}"
+            deck.push(card)
+        end
+    end
+    shuffled_deck = deck.shuffle
+    hand = shuffled_deck[0,5]
+%>
+
+<% for card in hand %>
+    <img src="/images/cards/<%= card %>.svg">
+<% end %>
+
